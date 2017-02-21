@@ -1,15 +1,17 @@
 project(subtitlesLib)
 
 set(lib_source
+    ParseHelper.cpp
     Subtitle.cpp
     SubtitleSection.cpp
-    Time.cpp
+    SubtitleTime.cpp
 )
 
 set(lib_headers
+    ParseHelper.h
     Subtitle.h
     SubtitleSection.h
-    Time.h
+    SubtitleTime.h
 )
 
 add_library(subtitlesLib STATIC ${lib_source} ${lib_headers})

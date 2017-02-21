@@ -12,14 +12,11 @@ set(CXX_STANDARD 14)
 
 add_subdirectory(src)
 
-add_executable(main main.cpp)
-target_link_libraries(main subtitlesLib)
-
 enable_testing()
 
 find_package (Qt5Test REQUIRED)
 
-add_executable(test_SubtitleLib tests/test_SubtitleLib.cpp)
-target_link_libraries(test_SubtitleLib Qt5::Test subtitlesLib)
+add_executable(SubtitleLibTests tests/SubtitleLibTests.cpp)
+target_link_libraries(SubtitleLibTests Qt5::Test subtitlesLib)
 
-add_test(NAME testSubtitleLib COMMAND test_SubtitleLib)
+add_test(NAME testSubtitleLib COMMAND SubtitleLibTests)

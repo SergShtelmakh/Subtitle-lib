@@ -1,22 +1,27 @@
 #pragma once
 
-#include <list>
+#include "SubtitleSection.h"
+
+#include <vector>
 #include <string>
 
 namespace sub_util
 {
-class SubtitleSection;
 
 class Subtitle
 {
 public:
-	Subtitle(){}
+	Subtitle() = default;
 	Subtitle(const std::string &path);
 
 	void load(const std::string &path);
 
+	size_t size() const;
+
+	SubtitleSection operator[](int index) const;
+
 private:
-	std::list<SubtitleSection> m_data;
+	std::vector<SubtitleSection> m_data;
 };
 
 }
