@@ -3,7 +3,6 @@
 #include "SubtitleTime.h"
 
 #include <string>
-#include <list>
 
 namespace sub_util
 {

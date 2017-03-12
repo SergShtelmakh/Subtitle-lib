@@ -2,9 +2,9 @@
 #include <QDebug>
 #include <QString>
 
-#include <src/ParseHelper.h>
-#include <src/SubtitleTime.h>
-#include <src/Subtitle.h>
+#include "ParseHelper.h"
+#include "SubtitleTime.h"
+#include "Subtitle.h"
 
 using namespace sub_util;
 

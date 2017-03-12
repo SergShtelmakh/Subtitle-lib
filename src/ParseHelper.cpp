@@ -1,5 +1,8 @@
 #include "ParseHelper.h"
 
+#include "SubtitleTime.h"
+#include "SubtitleSection.h"
+
 #include <regex>
 #include <fstream>
 

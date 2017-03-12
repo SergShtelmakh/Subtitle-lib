@@ -10,7 +10,27 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 set(CXX_STANDARD 14)
 
-add_subdirectory(src)
+# add lib
+
+include_directories(include)
+
+set(lib_source
+    src/ParseHelper.cpp
+    src/Subtitle.cpp
+    src/SubtitleSection.cpp
+    src/SubtitleTime.cpp
+)
+
+set(lib_headers
+    include/ParseHelper.h
+    include/Subtitle.h
+    include/SubtitleSection.h
+    include/SubtitleTime.h
+)
+
+add_library(subtitlesLib SHARED ${lib_source} ${lib_headers})
+
+# test lib
 
 enable_testing()
 

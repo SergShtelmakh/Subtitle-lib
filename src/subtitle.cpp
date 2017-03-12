@@ -1,9 +1,6 @@
 #include "Subtitle.h"
 
-#include "SubtitleSection.h"
 #include "ParseHelper.h"
-
-#include <fstream>
 
 namespace sub_util
 {
