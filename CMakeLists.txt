@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(Subtitles)
+project(SubtitleLib)
 
 set(PROJECT_VERSION "1.0")
 
@@ -15,28 +15,29 @@ set(CXX_STANDARD 14)
 include_directories(include)
 
 set(lib_source
-    src/ParseHelper.cpp
     src/Subtitle.cpp
-    src/SubtitleSection.cpp
-    src/SubtitleTime.cpp
+    src/Section.cpp
+    src/Time.cpp
+    src/ParseHelper.cpp
 )
 
 set(lib_headers
-    include/ParseHelper.h
-    include/Subtitle.h
-    include/SubtitleSection.h
-    include/SubtitleTime.h
+    include/subtitle_lib/Subtitle.h
+    include/subtitle_lib/Section.h
+    include/subtitle_lib/Time.h
+
+    src/ParseHelper.h
 )
 
-add_library(subtitlesLib SHARED ${lib_source} ${lib_headers})
+add_library(SubtitleLib SHARED ${lib_source} ${lib_headers})
 
 # test lib
 
-enable_testing()
-
 find_package (Qt5Test REQUIRED)
 
+enable_testing()
+
 add_executable(SubtitleLibTests tests/SubtitleLibTests.cpp)
-target_link_libraries(SubtitleLibTests Qt5::Test subtitlesLib)
+target_link_libraries(SubtitleLibTests Qt5::Test SubtitleLib)
 
 add_test(NAME testSubtitleLib COMMAND SubtitleLibTests)

@@ -1,14 +1,14 @@
-#include "SubtitleTime.h"
+#include "include/subtitle_lib/Time.h"
 
 #include <utility>
 
-namespace sub_util
+namespace subtitle_lib
 {
 const int cMsecInSecond = 1000;
 const int cSecondInMinute = 60;
 const int cMinuteInHour = 60;
 
-SubtitleTime::SubtitleTime(int hour, int minute, int second, int msec)
+Time::Time(int hour, int minute, int second, int msec)
 	: m_hour(hour)
 	, m_minute(minute)
 	, m_msec(msec)
@@ -16,7 +16,7 @@ SubtitleTime::SubtitleTime(int hour, int minute, int second, int msec)
 {
 }
 
-SubtitleTime::SubtitleTime(SubtitleTime &&other)
+Time::Time(Time &&other)
 	: m_hour(std::move(other.m_hour))
 	, m_minute(std::move(other.m_minute))
 	, m_msec(std::move(other.m_msec))
@@ -24,7 +24,7 @@ SubtitleTime::SubtitleTime(SubtitleTime &&other)
 {
 }
 
-SubtitleTime::SubtitleTime(const SubtitleTime &other)
+Time::Time(const Time &other)
 	: m_hour(other.m_hour)
 	, m_minute(other.m_minute)
 	, m_msec(other.m_msec)
@@ -32,47 +32,47 @@ SubtitleTime::SubtitleTime(const SubtitleTime &other)
 {
 }
 
-int SubtitleTime::hour() const
+int Time::hour() const
 {
 	return m_hour;
 }
 
-void SubtitleTime::setHour(int value)
+void Time::setHour(int value)
 {
 	m_hour = value;
 }
 
-int SubtitleTime::minute() const
+int Time::minute() const
 {
 	return m_minute;
 }
 
-void SubtitleTime::setMinute(int value)
+void Time::setMinute(int value)
 {
 	m_minute = value;
 }
 
-int SubtitleTime::msec() const
+int Time::msec() const
 {
 	return m_msec;
 }
 
-void SubtitleTime::setMsec(int value)
+void Time::setMsec(int value)
 {
 	m_msec = value;
 }
 
-int SubtitleTime::second() const
+int Time::second() const
 {
 	return m_second;
 }
 
-void SubtitleTime::setSecond(int value)
+void Time::setSecond(int value)
 {
 	m_second = value;
 }
 
-bool SubtitleTime::operator==(const SubtitleTime &other) const
+bool Time::operator==(const Time &other) const
 {
 	return  m_msec == other.m_msec &&
 			m_second == other.m_second &&
@@ -80,7 +80,7 @@ bool SubtitleTime::operator==(const SubtitleTime &other) const
 			m_hour == other.m_hour;
 }
 
-bool SubtitleTime::operator<(const SubtitleTime &other) const
+bool Time::operator<(const Time &other) const
 {
 	if (m_hour != other.m_hour) {
 		return m_hour < other.m_hour;
@@ -97,22 +97,22 @@ bool SubtitleTime::operator<(const SubtitleTime &other) const
 	return m_msec < other.m_msec;
 }
 
-bool SubtitleTime::operator<=(const SubtitleTime &other) const
+bool Time::operator<=(const Time &other) const
 {
 	return (*this < other) || (*this == other);
 }
 
-bool SubtitleTime::operator>(const SubtitleTime &other) const
+bool Time::operator>(const Time &other) const
 {
 	return other < *this;
 }
 
-bool SubtitleTime::operator>=(const SubtitleTime &other) const
+bool Time::operator>=(const Time &other) const
 {
 	return (*this > other) || (*this == other);
 }
 
-SubtitleTime &SubtitleTime::operator+=(const SubtitleTime &other)
+Time &Time::operator+=(const Time &other)
 {
 	m_hour += other.m_hour;
 	m_minute += other.m_minute;
@@ -122,12 +122,12 @@ SubtitleTime &SubtitleTime::operator+=(const SubtitleTime &other)
 	return *this;
 }
 
-SubtitleTime SubtitleTime::operator+(const SubtitleTime &other) const
+Time Time::operator+(const Time &other) const
 {
-	return SubtitleTime(*this) += other;
+	return Time(*this) += other;
 }
 
-void SubtitleTime::normalize()
+void Time::normalize()
 {
 	m_second += m_msec / cMsecInSecond;
 	m_minute += m_second / cSecondInMinute;
@@ -138,7 +138,7 @@ void SubtitleTime::normalize()
 	m_minute %= cMinuteInHour;
 }
 
-std::ostream &operator<<(std::ostream &os, const sub_util::SubtitleTime &time)
+std::ostream &operator<<(std::ostream &os, const subtitle_lib::Time &time)
 {
 	os << time.hour() << ':' << time.minute() << ':' << time.second() << ':' <<time.msec();
 	return os;

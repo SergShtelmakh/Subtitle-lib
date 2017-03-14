@@ -1,12 +1,12 @@
 #include "ParseHelper.h"
 
-#include "SubtitleTime.h"
-#include "SubtitleSection.h"
+#include "include/subtitle_lib/Time.h"
+#include "include/subtitle_lib/Section.h"
 
 #include <regex>
 #include <fstream>
 
-namespace sub_util
+namespace subtitle_lib
 {
 enum class ParseState {
 	ParseIndex,
@@ -16,14 +16,14 @@ enum class ParseState {
 
 const std::regex timeRegex("([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}),([0-9]{1,3})");
 
-std::vector<SubtitleTime> parseTimes(const std::string &text)
+std::vector<Time> parseTimes(const std::string &text)
 {
-	std::vector<SubtitleTime> result;
+	std::vector<Time> result;
 	auto tail = text;
 	std::smatch matches;
 	while (std::regex_search(tail, matches, timeRegex)) {
 		if (matches.size() >= 5) {
-			result.emplace_back(SubtitleTime(std::stoi(matches.str(1)),
+			result.emplace_back(Time(std::stoi(matches.str(1)),
 											 std::stoi(matches.str(2)),
 											 std::stoi(matches.str(3)),
 											 std::stoi(matches.str(4))));
@@ -33,16 +33,16 @@ std::vector<SubtitleTime> parseTimes(const std::string &text)
 	return std::move(result);
 }
 
-std::vector<SubtitleSection> parseSubtitles(const std::string &path)
+std::vector<Section> parseSubtitles(const std::string &path)
 {
 	std::ifstream input (path, std::ifstream::in);
 	if (!input.is_open()) {
 		return {};
 	}
 
-	std::vector<SubtitleSection> result;
+	std::vector<Section> result;
 
-	SubtitleSection currentSection;
+	Section currentSection;
 	std::string currentText;
 	ParseState state = ParseState::ParseIndex;
 	for (std::string line; getline(input, line); ) {
