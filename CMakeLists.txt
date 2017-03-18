@@ -32,11 +32,13 @@ add_library(SubtitleLib SHARED ${lib_source} ${lib_headers})
 
 # test lib
 
-find_package (Qt5Test REQUIRED)
+find_package(Qt5Test)
 
-enable_testing()
+if(Qt5Test_FOUND)
+    enable_testing()
 
-add_executable(SubtitleLibTests tests/SubtitleLibTests.cpp)
-target_link_libraries(SubtitleLibTests Qt5::Test SubtitleLib)
+    add_executable(SubtitleLibTests tests/SubtitleLibTests.cpp)
+    target_link_libraries(SubtitleLibTests Qt5::Test SubtitleLib)
 
-add_test(NAME testSubtitleLib COMMAND SubtitleLibTests)
+    add_test(NAME testSubtitleLib COMMAND SubtitleLibTests)
+endif()
