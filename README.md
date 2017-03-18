@@ -1,6 +1,4 @@
-[![Travic CI](https://travis-ci.org/SergShtelmakh/Subtitle-lib.svg?branch=master)](https://travis-ci.org/SergShtelmakh/Subtitle-lib)
-
-# Subtitle lib
+# Subtitle lib  [![Travic CI](https://travis-ci.org/SergShtelmakh/Subtitle-lib.svg?branch=master)](https://travis-ci.org/SergShtelmakh/Subtitle-lib)
 
 Simple c++ library for parsing subtitles.
 
