@@ -1,3 +1,5 @@
+![GitHub Logo](https://travis-ci.org/SergShtelmakh/Subtitle-lib.svg?branch=master)![GitHub Logo](/images/logo.png)
+
 # Subtitle lib
 
 Simple c++ library for parsing subtitles.
