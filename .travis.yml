@@ -1,13 +1,9 @@
 language: cpp
 
-before_install:
- - sudo apt-get install qtbase5-dev qtdeclarative5-dev qtdeclarative5-dev-tools qtdeclarative5-qtquick2-plugin qtdeclarative5-test-plugin -y
-
-script:
- - cmake --version
- - mkdir build
- - cd build
- - cmake ..
+before_install: . scripts/ci/$TRAVIS_OS_NAME/before_install.sh
+install: . scripts/ci/$TRAVIS_OS_NAME/install.sh
+script: . scripts/ci/$TRAVIS_OS_NAME/script.sh
+after_success: . scripts/ci/$TRAVIS_OS_NAME/after_success.sh
 
 notifications:
   email:
