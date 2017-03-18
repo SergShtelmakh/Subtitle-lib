@@ -1,3 +1,4 @@
+sudo: required
 language: cpp
 
 before_install: . scripts/ci/before_install.sh
