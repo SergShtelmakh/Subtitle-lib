@@ -1,0 +1,17 @@
+language: cpp
+sudo: required
+
+compiler:
+- clang
+os:
+- windows
+
+branches:
+  only:
+  - master
+
+script: --build . --target all
+
+notifications:
+  email:
+    - sh.serg1993@gmail.com
