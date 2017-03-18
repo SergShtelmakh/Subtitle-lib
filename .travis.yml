@@ -1,13 +1,13 @@
 language: cpp
 
 before_install:
-sudo apt-get install qtbase5-dev qtdeclarative5-dev qtdeclarative5-dev-tools qtdeclarative5-qtquick2-plugin qtdeclarative5-test-plugin -y
+ - sudo apt-get install qtbase5-dev qtdeclarative5-dev qtdeclarative5-dev-tools qtdeclarative5-qtquick2-plugin qtdeclarative5-test-plugin -y
 
 script:
-    - cmake --version
-    - mkdir build
-    - cd build
-    - cmake ..
+ - cmake --version
+ - mkdir build
+ - cd build
+ - cmake ..
 
 notifications:
   email:
