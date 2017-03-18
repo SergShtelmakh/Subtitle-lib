@@ -1,4 +1,4 @@
-![GitHub Logo](https://travis-ci.org/SergShtelmakh/Subtitle-lib.svg?branch=master)![GitHub Logo](/images/logo.png)
+![Travic CI](https://travis-ci.org/SergShtelmakh/Subtitle-lib.svg?branch=master)
 
 # Subtitle lib
 
