@@ -1,16 +1,13 @@
 language: cpp
-sudo: required
 
 compiler:
 - clang
-os:
-- windows
 
-branches:
-  only:
-  - master
-
-script: --build . --target all
+script:
+    - cmake --version
+    - mkdir _builds
+    - cd _builds
+    - cmake ..
 
 notifications:
   email:
