@@ -60,6 +60,6 @@ private:
 	QString m_subtitleTestData;
 };
 
-QTEST_MAIN(SubtitleLibTests)
+QTEST_GUILESS_MAIN(SubtitleLibTests)
 
 #include "SubtitleLibTests.moc"
