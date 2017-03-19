@@ -4,6 +4,17 @@ os: linux
 env: QT_VERSION=5
 language: cpp
 
+addons:
+  apt:
+    packages:
+      - g++-6
+      
+matrix:
+  include:
+     - os: linux
+       env: UNIT_TESTS=true COMPILER=g++-6
+       compiler: gcc
+
 before_install: . scripts/ci/before_install.sh
 install: . scripts/ci/install.sh
 script: . scripts/ci/script.sh
