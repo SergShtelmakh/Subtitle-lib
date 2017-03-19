@@ -5,5 +5,4 @@ set -ev
 pushd build
 cmake ..
 make
-make test
 popd
