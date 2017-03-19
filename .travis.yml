@@ -3,6 +3,7 @@ dist: trusty
 os: linux
 env: QT_VERSION=5
 language: cpp
+compiler: gcc-5.3
 
 before_install: . scripts/ci/before_install.sh
 install: . scripts/ci/install.sh
