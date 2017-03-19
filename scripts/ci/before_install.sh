@@ -6,7 +6,10 @@ set -ev
 #sh -e /etc/init.d/xvfb start
 
 # Install Ubuntu packages
-sudo add-apt-repository ppa:ntadej/tano ppa:ubuntu-toolchain-r/test
+sudo add-apt-repository ppa:ntadej/tano
+sudo apt-get update
+
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 
 # Install Qt
