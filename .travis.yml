@@ -10,7 +10,3 @@ script: . scripts/ci/script.sh
 after_success: . scripts/ci/after_success.sh
 
 group: stable
-
-notifications:
-  email:
-    - sh.serg1993@gmail.com
