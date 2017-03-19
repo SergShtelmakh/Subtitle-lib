@@ -1,11 +1,43 @@
-sudo: required
-dist: trusty
-os: linux
-env: QT_VERSION=5
 language: cpp
-compiler: 
-  - clang
-  - gcc
+sudo: required
+
+env:
+  matrix:
+    - TRAVIS_EMPTY_JOB_WORKAROUND=true
+    
+addons:
+  apt:
+    packages:
+      - valgrind
+      - g++-6
+    sources: &sources
+      - ubuntu-toolchain-r-test    
+    
+matrix:
+  exclude:
+    - env: TRAVIS_EMPTY_JOB_WORKAROUND=true
+
+  include:
+    # Clang 3.6
+    - os: linux
+      env: UNIT_TESTS=true LLVM_VERSION=3.6.2 
+      compiler: clang
+
+    # Clang 3.7
+    - os: linux
+      env: UNIT_TESTS=true LLVM_VERSION=3.7.1 
+      compiler: clang
+
+    # Clang 3.8
+    - os: linux
+      env: UNIT_TESTS=true LLVM_VERSION=3.8.0 
+      compiler: clang
+
+    # GCC 6
+    - os: linux
+      env: UNIT_TESTS=true COMPILER=g++-6
+      compiler: gcc
+      
 
 before_install: . scripts/ci/before_install.sh
 install: . scripts/ci/install.sh
